@@ -76,6 +76,50 @@ Click Rank Resumes to get the ranking and detailed evaluation.
 ├── .env                    # Environment variables (Google API Key)
 └── README.md               # Project documentation
 ```
+
+Project Diagram
+```
++----------------------+
+|      User (UI)       |
+|----------------------|
+| - Paste Job Desc     |
+| - Upload PDFs        |
+| - Click "Rank"       |
++----------+-----------+
+           |
+           v
++----------------------+
+|  PDF Text Extraction |
+| (PyPDF2 library)     |
++----------+-----------+
+           |
+           v
++----------------------+
+|  Prompt Creation     |
+| (Resume + JD + Instr)|
++----------+-----------+
+           |
+           v
++----------------------+
+| AI Evaluation        |
+| (Google Gemini 2.0)  |
++----------+-----------+
+           |
+           v
++----------------------+
+|  Result Parsing      |
+| - JD Match %         |
+| - Missing Keywords   |
+| - Profile Summary    |
++----------+-----------+
+           |
+           v
++----------------------+
+|  Ranking & Display   |
+| - Streamlit Table    |
+| - Detailed Eval      |
++----------------------+
+```
 ⚙️ Dependencies
 
 Python 3.10+
